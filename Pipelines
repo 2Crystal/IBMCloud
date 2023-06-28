@@ -1,0 +1,70 @@
+using System;
+
+public class Calculator
+{
+    public double Add(double a, double b)
+    {
+        return a + b;
+    }
+
+    public double Subtract(double a, double b)
+    {
+        return a - b;
+    }
+
+    public double Multiply(double a, double b)
+    {
+        return a * b;
+    }
+
+    public double Divide(double a, double b)
+    {
+        if (b == 0)
+        {
+            throw new DivideByZeroException();
+        }
+        return a / b;
+    }
+
+    public double SquareRoot(double a)
+    {
+        if (a < 0)
+        {
+            throw new ArgumentException("Cannot calculate square root of a negative number.");
+        }
+        return Math.Sqrt(a);
+    }
+
+    public double Power(double a, double b)
+    {
+        return Math.Pow(a, b);
+    }
+
+    public double Logarithm(double a, double b)
+    {
+        if (a <= 0 || b <= 0)
+        {
+            throw new ArgumentException("Logarithm arguments should be greater than 0.");
+        }
+        return Math.Log(a, b);
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Calculator calculator = new Calculator();
+
+        double a = 5.0;
+        double b = 2.0;
+
+        Console.WriteLine($"Add: {calculator.Add(a, b)}");
+        Console.WriteLine($"Subtract: {calculator.Subtract(a, b)}");
+        Console.WriteLine($"Multiply: {calculator.Multiply(a, b)}");
+        Console.WriteLine($"Divide: {calculator.Divide(a, b)}");
+        Console.WriteLine($"SquareRoot: {calculator.SquareRoot(a)}");
+        Console.WriteLine($"Power: {calculator.Power(a, b)}");
+        Console.WriteLine($"Logarithm: {calculator.Logarithm(a, b)}");
+    }
+}
